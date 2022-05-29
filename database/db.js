@@ -4,7 +4,7 @@ const { database } = require('./config')
 const sequelize = new Sequelize(database.database, database.username, database.password, {
     host: database.host,
     port: 33060,
-    dialect: 'mysql',
+    dialect: process.env.DB_DIALECT || 'mysql',
     logging: false
 })
 

@@ -10,6 +10,6 @@ const CourseModel = sequelize.define('course',{
     name: {
         type: DataTypes.STRING
     }
-})
+}, { timestamps: false })
 
 module.exports = CourseModel

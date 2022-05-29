@@ -1,11 +1,15 @@
 const express = require('express')
 const Router = express.Router()
 const Course = require('../../models/Course')
+const Student = require('../../models/Student')
 
 
 Router.get('/', (req, res) => {
-    Course.findAll().then(courses => res.json(courses)
-    )
+    Course.findAll({include: {
+        model: Student,
+        as: 'students'
+    }}).then((courses) => res.json(courses))
+    
 })
 Router.post('/',  (req,res) => {
     Course.create({
