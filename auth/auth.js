@@ -7,23 +7,15 @@ const opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
 opts.secretOrKey = 'top_secret'
 
+    //Checks if token is valid.
 passport.use(new JwtStrategy(opts, async function (jwt_payload, done){
-  /*  const usera = await UserModel.findOne({ where: {
-        idUser: jwt_payload.id
-    }}, function (err, user){
-        console.log(usera)
-        if (err) {
-            return done(err, false)
-        }
-        if (!user) {
-            return done(null, user)
-        } else {
-            return done(null, false)
-        }
-    })*/
     const user = await UserModel.findOne({ where: {
         idUser: jwt_payload.id
-    }})
-    if (user)
+    }}).catch((err) => done(err, false))
+
+    if (user){
         done(null, user)
+    } else {
+        done(null, false)
+    }
 }))

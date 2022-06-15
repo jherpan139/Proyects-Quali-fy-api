@@ -21,6 +21,12 @@ const Course_UserModel = sequelize.define('courses_user',{
             model: Course,
             key: 'idCourse'
         }
+    },
+    //0 eq teacher, 1 eq tutor.
+    role: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false
     }
 }, { timestamps: false })
 

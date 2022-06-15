@@ -8,7 +8,8 @@ const CourseModel = sequelize.define('course',{
         primaryKey: true
     },
     name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     }
 }, { timestamps: false })
 

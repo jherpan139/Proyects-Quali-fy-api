@@ -18,13 +18,14 @@ const UserModel = sequelize.define('user',{
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    //0 == teacher, 1 == tutor, 2 == admin
+    //0 eq normal user, 1 eq admin
     role: {
         type: DataTypes.INTEGER,
         defaultValue: 0,

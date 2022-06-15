@@ -5,9 +5,11 @@ const validation = require('./validation')
 const StudentActions = require('./actions')
 
 Router.get('/', validation.listAllStudents, StudentActions.listAllStudents)
-Router.post('/qualify', validation.createStudent, StudentActions.createStudent)
+Router.post('/', validation.createStudent, StudentActions.createStudent)
+//Router.post('/qualify', validation.addGradeToStudent, StudentActions.createStudent)
 Router.get('/:id', validation.findStudentById, StudentActions.findStudentById)
 Router.post('/course', validation.findStudentByCourse,StudentActions.findStudentByCourse)
+Router.post('/:id/finalQualify', StudentActions.qualifyStudent)
 
 Router.put('/:id', (req, res) => {
     Student.update({

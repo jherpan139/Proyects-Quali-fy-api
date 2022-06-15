@@ -12,12 +12,26 @@ const StudentModel = sequelize.define('student',{
         type: DataTypes.STRING,
         allowNull: false
     },
-    email: {
+    surnames: {
         type: DataTypes.STRING,
         allowNull: false
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
     dni: {
         type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    final_grade: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    idCourse: {
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 }, { timestamps: false })

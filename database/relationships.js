@@ -15,5 +15,5 @@ Course.belongsToMany(User, {through: Course_user, foreignKey: 'idCourse'})
 
 //One to many relationships
 
-Course.hasMany(Student, {as: 'students', foreignKey: 'idCourse'})
+Course.hasMany(Student, {foreignKey: 'idCourse'})
 Student.belongsTo(Course, {foreignKey: 'idCourse'})
