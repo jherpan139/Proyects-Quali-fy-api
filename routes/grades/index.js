@@ -7,6 +7,7 @@ const GradeActions = require('./actions')
 Router.get('/', GradeActions.listAllGrades)
 Router.post('/teacher/qualify', validation.createGrade, GradeActions.createGrade)
 Router.get('/student/:id', GradeActions.listStudentGrades)
+Router.get('/teacher/:id', GradeActions.listTeacherGrades)
 
 
 module.exports = Router

@@ -5,6 +5,7 @@ const passport = require('passport')
 const cors = require('cors')
 require('./database/relationships')
 require('dotenv').config()
+
 //Routes
 const courseRoutes = require('./routes/courses/index')
 const userRoutes = require('./routes/users/index')

@@ -1,6 +1,5 @@
 const Student = require('../../models/Student')
 const Course = require('../../models/Course')
-const User = require('../../models/User')
 
 const create = async(req,res) => {
     await Student.create({
@@ -71,12 +70,22 @@ const qualify = async(req, res) => {
     .catch((err) => res.status(404).json(err))
 }
 
+const destroy = async (req, res) => {
+    Student.destroy({
+        where: {
+            idStudent: req.params.id
+        }
+    }).then(info => res.json(info))
+    .catch(err => res.status(400).json(err))
+}
+
 const StudentActions = {
     createStudent: create,
     listAllStudents: listAll,
     findStudentById: findById,
     findStudentByCourse: findByCourse,
-    qualifyStudent: qualify
+    qualifyStudent: qualify,
+    deleteStudent: destroy,
 }
 
 module.exports = StudentActions

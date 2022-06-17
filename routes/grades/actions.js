@@ -52,11 +52,20 @@ const listByStudent = async (req, res) => {
     .catch(err => res.status(404).json(err))
 }
 
+const listByTeacher = async (req, res) => {
+    await Grade.findAll({ where: {
+        idUser: req.params.id
+    }})
+    .then((grades) => res.json(grades))
+    .catch(err => res.status(404).json(err))
+}
+
 const GradeActions = {
     createGrade: create,
     listAllGrades: listAll,
     listGradeByIds: listByIds,
-    listStudentGrades: listByStudent
+    listStudentGrades: listByStudent,
+    listTeacherGrades: listByTeacher,
 }
 
 module.exports = GradeActions
